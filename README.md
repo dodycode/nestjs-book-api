@@ -1,6 +1,6 @@
 # Books API (WORK IN PROGRESS)
 
-My Personal API Project that build for practice [Repository Design Pattern](https://cubettech.com/resources/blog/introduction-to-repository-design-pattern/).
+My Personal API Project that build for learning about [Repository Design Pattern](https://cubettech.com/resources/blog/introduction-to-repository-design-pattern/).
 
 ## How to run
 
