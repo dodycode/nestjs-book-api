@@ -9,7 +9,7 @@ export class AuthorRepository extends BaseRepository {
     super(prisma.author);
   }
 
-  //fields will be use for create, update body
+  //fillable fields in db
   resourceToModel(resource: any) {
     const model = _.pick(resource, ['firstName', 'lastName']);
 
