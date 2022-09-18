@@ -1,6 +1,6 @@
 # Books API (WORK IN PROGRESS)
 
-My Personal API Project that build for practice [Repository Design Pattern](https://cubettech.com/resources/blog/introduction-to-repository-design-pattern/).
+Nest JS Books API that implements [Repository Design Pattern](https://cubettech.com/resources/blog/introduction-to-repository-design-pattern/) with Prisma ORM.
 
 ## How to run
 
