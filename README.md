@@ -17,6 +17,7 @@ Nest JS Books API that implements [Repository Design Pattern](https://cubettech.
 - [ ] Finishing Book API (CRUD: /book)
 - [ ] Finishing Genre API (CRUD: /genre)
 - [x] Implements Validation Schema
+- [ ] Implements Swagger Open API for API Documentation
 - [ ] Implements Authentications for admin
 
 ### Techstack
