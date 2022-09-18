@@ -1,4 +1,21 @@
-import { Controller, Delete, Get, Patch, Post, Req } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpException,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+  Req,
+  UsePipes,
+} from '@nestjs/common';
+import { ZodValidationPipe } from 'nestjs-zod';
+import { CreateUserDto } from 'src/dto/createUser.dto';
+import { UpdateUserDto } from 'src/dto/updateUser.dto';
 import { AuthorRepository } from 'src/repositories/author';
 import { PrismaService } from 'src/services/prisma.service';
 
@@ -11,33 +28,49 @@ export class AuthorController {
 
   @Get()
   async getAuthors(@Req() req) {
-    return await this.authorRepositoryClass.findAll(
-      {},
-      req?.filterQueryParams,
-      req?.query,
-    );
+    try {
+      return await this.authorRepositoryClass.findAll(
+        {},
+        req?.filterQueryParams,
+        req?.query,
+      );
+    } catch (error) {
+      throw new HttpException(error?.meta?.cause, 500);
+    }
   }
 
   @Post()
-  async createAuthor(@Req() req) {
+  async createAuthor(@Body() bodyReq: CreateUserDto) {
     //map body req
-    const newAuthor = this.authorRepositoryClass.resourceToModel(req.body);
+    const newAuthor = this.authorRepositoryClass.resourceToModel(bodyReq);
 
-    return await this.authorRepositoryClass.create({ ...newAuthor });
+    try {
+      return await this.authorRepositoryClass.create({ ...newAuthor });
+    } catch (error) {
+      throw new HttpException(error?.meta?.cause, 500);
+    }
   }
 
   @Patch('/:id')
-  async updateAuthor(@Req() req) {
+  async updateAuthor(@Body() bodyReq: UpdateUserDto, @Param('id') id: number) {
     //map body req
-    const updatedAuthor = this.authorRepositoryClass.resourceToModel(req.body);
+    const updatedAuthor = this.authorRepositoryClass.resourceToModel(bodyReq);
 
-    return await this.authorRepositoryClass.update(req.params.id, {
-      ...updatedAuthor,
-    });
+    try {
+      return await this.authorRepositoryClass.update(id, {
+        ...updatedAuthor,
+      });
+    } catch (error) {
+      throw new HttpException(error?.meta?.cause, 500);
+    }
   }
 
   @Delete('/:id')
-  async deleteAuthor(@Req() req) {
-    return await this.authorRepositoryClass.delete(req.params.id);
+  async deleteAuthor(@Param('id') id: number) {
+    try {
+      return await this.authorRepositoryClass.delete(id);
+    } catch (error) {
+      throw new HttpException(error?.meta?.cause, 500);
+    }
   }
 }
