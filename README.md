@@ -28,3 +28,4 @@ Nest JS Books API that implements [Repository Design Pattern](https://cubettech.
 - Prisma ORM
 - Prisma Filter Query Parser (by [Muhammad Firdaus Sati](https://github.com/krsbx/prisma-fqp))
 - Lodash JS
+- Zod
