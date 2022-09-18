@@ -1,19 +1,14 @@
 import {
-  BadRequestException,
   Body,
   Controller,
   Delete,
   Get,
-  HttpCode,
   HttpException,
-  HttpStatus,
   Param,
   Patch,
   Post,
   Req,
-  UsePipes,
 } from '@nestjs/common';
-import { ZodValidationPipe } from 'nestjs-zod';
 import { CreateUserDto } from 'src/dto/createUser.dto';
 import { UpdateUserDto } from 'src/dto/updateUser.dto';
 import { AuthorRepository } from 'src/repositories/author';
